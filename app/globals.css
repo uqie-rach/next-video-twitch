@@ -9,6 +9,7 @@ body,
   @apply bg-neutral-900/80;
 }
 
+
 .hidden-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -18,41 +19,38 @@ body,
   display: none;
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+@theme {
+  --color-background: #252731;
+  --color-foreground: #010816;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+  --color-card: #ffffff;
+  --color-card-foreground: #010816;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #010816;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #0f172a;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+  --color-destructive: #ee4444;
+  --color-destructive-foreground: #f7f9fb;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #010816;
 
-    --radius: 0.5rem;
-  }
+  --radius: 0.5rem;
+
+
 }
 
-@layer base {
-  * {
-    border: var(--border);
-  }
+* {
+  border: var(--border);
+}
 
-  body {
-    background: var(--background);
-    color: var(--foreground);
-  }
+body {
+  font-family: var(--font-lato);
 }
