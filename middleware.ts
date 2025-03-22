@@ -1,17 +1,21 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { clerkMiddleware, ClerkMiddlewareAuth, createRouteMatcher } from '@clerk/nextjs/server'
+import { updateSession } from './utils/supabase/middleware'
+import { NextRequest } from 'next/server'
 
 const isPublicRoute = createRouteMatcher([
+  '/',
   '/sign-in(.*)',
-  '/sign-up(.*)'
+  '/sign-up(.*)',
+  "/api/webhooks(.*)",
 ])
 
-export default clerkMiddleware(async (auth, req) => {
+export default clerkMiddleware(async (auth: ClerkMiddlewareAuth, req: NextRequest) => {
   if (!isPublicRoute(req)) {
-    console.log('[middleware] Protecting route')
+    console.log('middleware.ts: protect')
     await auth.protect()
   }
 
-  console.log('[middleware] Route is public')
+  return await updateSession(req);
 })
 
 export const config = {
