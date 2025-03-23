@@ -56,9 +56,6 @@ const Toggle = () => {
 
 export default Toggle;
 
-
-import React from 'react'
-
 export const ToggleSkeleton = () => {
   return (
     <div className="p-3 pl-6 mb-2 hidden lg:flex items-center justify-between w-full">
