@@ -32,7 +32,7 @@ const UserItem = ({ imageUrl, username, isLive }: UserItemProps) => {
         cn(
           "w-full h-12 px-2",
           collapsed ? 'justify-center' : 'justify-start',
-          isActive && 'bg-accent',
+          isActive && 'bg-accent/5',
         )
       }
     >

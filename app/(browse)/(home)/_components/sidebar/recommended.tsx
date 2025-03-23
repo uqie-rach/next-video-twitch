@@ -17,7 +17,6 @@ const Recommended = ({
 
   const showLabel = !collapsed && data.length > 0;
 
-  console.log(showLabel)
   return (
     <div>
       <div className="mb-4">

@@ -1,17 +1,21 @@
 'use client';
 
-import { onFollow, onUnfollow } from "@/actions/follow";
-import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
 import { useTransition } from "react";
 import { toast } from "sonner";
 
+import { Button } from "@/components/ui/button";
+
+import { onBlock, onUnblock } from "@/actions/block";
+import { onFollow, onUnfollow } from "@/actions/follow";
+
 interface ActionProps {
   isFollowing: boolean;
+  isBlocking: boolean;
   userId: string;
 }
 
-const Actions = ({ isFollowing, userId }: ActionProps) => {
+const Actions = ({ isBlocking, isFollowing, userId }: ActionProps) => {
   const [isPending, startTransition] = useTransition();
 
   function handleFollow() {
@@ -30,14 +34,41 @@ const Actions = ({ isFollowing, userId }: ActionProps) => {
     })
   }
 
-  const onClick = isFollowing ? handleUnfollow : handleFollow
+  const toggleFollowStatus = isFollowing ? handleUnfollow : handleFollow
+
+  function handleBlock() {
+    startTransition(() => {
+      onBlock(userId)
+        .then(data => toast.success(`Blocked ${data.blocked.username}`))
+        .catch(error => toast.error(error.message))
+    })
+  }
+
+  function handleUnblock() {
+    startTransition(() => {
+      onUnblock(userId)
+        .then(data => toast.success(`Unblocked ${data.blocked.username}`))
+        .catch(error => toast.error(error.message))
+    })
+  }
+
+  const toggleBlockStatus = isBlocking ? handleUnblock : handleBlock;
+
   return (
-    <Button disabled={isPending} onClick={onClick} variant='primary' className="w-fit">
-      {
-        isPending ? <Loader size={16} className="animate-spin" /> : null
-      }
-      {isFollowing ? 'Unfollow' : 'Follow'}
-    </Button>
+    <div className="space-x-4">
+      <Button disabled={isPending} onClick={toggleFollowStatus} variant='primary' className="w-fit">
+        {
+          isPending ? <Loader size={16} className="animate-spin" /> : null
+        }
+        {isFollowing ? 'Unfollow' : 'Follow'}
+      </Button>
+      <Button disabled={isPending} onClick={toggleBlockStatus} variant='destructive' className="w-fit">
+        {
+          isPending ? <Loader size={16} className="animate-spin" /> : null
+        }
+        {isBlocking ? 'Unblock' : 'Block'}
+      </Button>
+    </div>
   )
 }
 
