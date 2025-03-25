@@ -41,11 +41,11 @@ const Search = () => {
         value={value}
         onChange={e => setValue(e.target.value)}
         placeholder='Search...'
-        className='rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 border-none bg-black/90'
+        className='rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 border-none !bg-foreground/5'
       />
       {
         value && (
-          <X onClick={onClear} className='absolute top-2.5 right-12 h-5 w-5 text-white/60 cursor-pointer hover:opacity-75 transition' />
+          <X onClick={onClear} className='absolute top-2.5 right-12 h-5 w-5 text-foreground/50 cursor-pointer hover:opacity-75 transition' />
         )
       }
       <Button
