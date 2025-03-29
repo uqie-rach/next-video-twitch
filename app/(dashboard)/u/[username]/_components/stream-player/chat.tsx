@@ -10,6 +10,7 @@ import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 import { ChatHeader } from "./chat-header";
 import { ChatForm } from "./chat-form";
 import { ChatList } from "./chat-list";
+import { CommunityTab } from "./community-tab";
 
 interface ChatProps {
   viewerName: string;
@@ -90,7 +91,11 @@ export const Chat = (
       {
         variant === ChatVariant.COMMUNITY && (
           <>
-            <p>Community Mode</p>
+            <CommunityTab
+              viewerName={viewerName}
+              hostName={hostName}
+              isHidden={isHidden}
+            />
           </>
         )
       }
