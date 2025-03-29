@@ -20,12 +20,15 @@ interface StreamPlayerProps {
 const StreamPlayer = (
   { user, stream, isFollowing }: StreamPlayerProps
 ) => {
+  // Get the viewer token for the host identity
+  // This will be used to connect to the LiveKit room
   const {
     token,
     name,
     identity
   } = useViewerToken(user.id);
 
+  // Controls the chat sidebar state
   const { collapsed } = useChatSidebar(state => state);
 
   if (!token || !name || !identity) {
@@ -37,6 +40,8 @@ const StreamPlayer = (
   return (
     <>
       {
+        // If the chat sidebar is collapsed, show the chat toggle button.
+        // This only shows on large screens.
         collapsed && (
           <div className="hidden lg:block fixed top-[100px] right-2 z-50">
             <ChatToggle />

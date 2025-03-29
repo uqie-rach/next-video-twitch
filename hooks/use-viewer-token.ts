@@ -14,11 +14,16 @@ export const useViewerToken = (hostIdentity: string) => {
   useEffect(() => {
     const createToken = async () => {
       try {
+        // Check if the viewer identity is valid
         const viewerToken = await createViewerToken(hostIdentity);
         setToken(viewerToken);
 
+        // Decode the token to get the identity and name
         const decodedToken = jwtDecode<JwtPayload & { name?: string }>(viewerToken);
         const name = decodedToken?.name;
+
+        // Take the identity from the token
+        // If the token is not valid, the identity will be undefined
         const identity = decodedToken?.sub;
 
         if (identity) {
@@ -33,6 +38,8 @@ export const useViewerToken = (hostIdentity: string) => {
       }
     }
 
+    // Create the token when the host identity changes
+    // This will also run when the component mounts
     createToken()
   }, [hostIdentity])
 
