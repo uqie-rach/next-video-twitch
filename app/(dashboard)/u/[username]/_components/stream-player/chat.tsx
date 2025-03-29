@@ -39,8 +39,7 @@ export const Chat = (
 
   const isOnline = participant && connectionState === ConnectionState.Connected;
 
-  // const isHidden = !isChatEnabled || !isOnline;
-  const isHidden = false;
+  const isHidden = !isChatEnabled || !isOnline;
 
   const [value, setValue] = useState('');
   const { chatMessages: messages, send } = useChat();
