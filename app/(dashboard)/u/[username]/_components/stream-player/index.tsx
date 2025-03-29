@@ -2,6 +2,7 @@
 
 import { Stream, User } from "@prisma/client";
 import { LiveKitRoom } from '@livekit/components-react';
+import { LoaderCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useViewerToken } from "@/hooks/use-viewer-token";
@@ -33,9 +34,20 @@ const StreamPlayer = (
 
   if (!token || !name || !identity) {
     return (
-      <div>Cannot watch the stream</div>
+      <StreamLoader />
     )
   }
+
+  // Populate the props for the chat component
+  let ChatProps = {
+    viewerName: name,
+    hostName: user.username,
+    hostIdentity: user.id,
+    isFollowing: isFollowing,
+    isChatEnabled: stream.isChatEnabled,
+    isChatDelayed: stream.isChatDelayed,
+    isChatFollowersOnly: stream.isChatFollowersOnly,
+  };
 
   return (
     <>
@@ -70,15 +82,7 @@ const StreamPlayer = (
             collapsed && 'hidden',
           )
         }>
-          <Chat
-            viewerName={name}
-            hostName={user.username}
-            hostIdentity={user.id}
-            isFollowing={isFollowing}
-            isChatEnabled={stream.isChatEnabled}
-            isChatDelayed={stream.isChatDelayed}
-            isChatFollowersOnly={stream.isChatFollowersOnly}
-          />
+          <Chat {...ChatProps} />
         </div>
       </LiveKitRoom>
     </>
@@ -86,3 +90,14 @@ const StreamPlayer = (
 }
 
 export default StreamPlayer;
+
+const StreamLoader = () => {
+  return (
+    <div className="mx-auto mt-30 lg:mt-40 w-fit flex gap-4 items-center bg-white/5 rounded-lg p-4">
+      <LoaderCircle className="animate-spin text-blue-500" size={32} />
+      <p className="text-sm lg:text-lg text-foreground/50">
+        Please wait a moment.
+      </p>
+    </div>
+  )
+}
