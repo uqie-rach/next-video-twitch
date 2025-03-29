@@ -5,8 +5,9 @@ import {
   useConnectionState,
   useRemoteParticipant,
   useTracks,
-  useLocalParticipant,
 } from '@livekit/components-react';
+
+import { Skeleton } from '@/components/ui/skeleton';
 
 import { OfflineVideo } from './offline-video';
 import { LoadingVideo } from './loading-video';
@@ -50,3 +51,11 @@ const Video = (
 }
 
 export default Video
+
+export const VideoSkeleton = () => {
+  return (
+    <div className="aspect-video border-x border-background">
+      <Skeleton className='h-full w-full rounded-none' />
+    </div>
+  );
+};
