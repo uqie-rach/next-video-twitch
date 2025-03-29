@@ -7,6 +7,7 @@ import {
   useTracks,
   useLocalParticipant,
 } from '@livekit/components-react';
+
 import { OfflineVideo } from './offline-video';
 import { LoadingVideo } from './loading-video';
 import LiveVideo from './live-video';
@@ -42,7 +43,7 @@ const Video = (
     )
   }
   return (
-    <div className="aspect-video border-b group relative">
+    <div className="aspect-video border-b border-white/10 group relative">
       {content}
     </div>
   )
