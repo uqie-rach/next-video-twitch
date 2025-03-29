@@ -9,7 +9,7 @@ import { ChatVariant, useChatSidebar } from "@/store/use-chat-sidebar";
 
 import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
 import { ChatForm, ChatFormSkeleton } from "./chat-form";
-import { ChatList } from "./chat-list";
+import { ChatList, ChatListSkeleton } from "./chat-list";
 import { CommunityTab } from "./community-tab";
 
 interface ChatProps {
