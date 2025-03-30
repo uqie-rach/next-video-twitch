@@ -12,6 +12,7 @@ import Video, { VideoSkeleton } from "./video";
 import { Chat, ChatSkeleton } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { VideoHeader, VideoHeaderSkeleton } from "./video-header";
+import { InfoCard } from "./info-card";
 
 interface StreamPlayerProps {
   user: User & { stream: Stream | null };
@@ -83,6 +84,12 @@ const StreamPlayer = (
             isFollowing={isFollowing}
             imageUrl={user.imageUrl}
             name={name}
+          />
+          <InfoCard
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            name={stream.name}
+            thumbnailUrl={stream.thumbnailUrl || ''}
           />
         </div>
         <div className={
