@@ -1,11 +1,13 @@
 'use client';
 
-import UserAvatar, { UserAvatarSkeleton } from "@/components/user-avatar";
-import { VerifiedMark } from "../verified-mark";
 import { useParticipants, useRemoteParticipant } from "@livekit/components-react";
 import { UserIcon } from "lucide-react";
-import { Actions, ActionsSkeleton } from "./actions";
+
+import UserAvatar, { UserAvatarSkeleton } from "@/components/user-avatar";
 import { Skeleton } from "@/components/ui/skeleton";
+
+import { VerifiedMark } from "../verified-mark";
+import { Actions, ActionsSkeleton } from "./actions";
 
 interface VideoHeaderProps {
   hostName: string;
@@ -50,7 +52,7 @@ export const VideoHeader = (
           imageUrl={imageUrl}
           username={hostName}
           size="lg"
-          isLive={true}
+          isLive={isLive}
           showBadge
         />
         <div className="space-y-1">
