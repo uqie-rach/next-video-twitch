@@ -2,6 +2,7 @@ import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
 import { db } from '@/lib/prisma'
+import { resetIngresses } from '@/actions/ingress'
 
 export async function POST(req: Request) {
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET
@@ -98,6 +99,8 @@ export async function POST(req: Request) {
       }
     })
   } else if (eventType === 'user.deleted') {
+    await resetIngresses(payload.data.id);
+
     const user = await db.user.findUnique({
       where: {
         externalUserId: payload.data.id,
