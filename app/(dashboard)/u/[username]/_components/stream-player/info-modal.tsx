@@ -99,12 +99,12 @@ export const InfoModal = (
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <DialogHeader>
+        <DialogHeader className="mb-4">
           <DialogTitle>
             Edit
           </DialogTitle>
         </DialogHeader>
-        <form className="space-y-14" onSubmit={onSubmit}>
+        <form className="space-y-6" onSubmit={onSubmit}>
           <div className="space-y-2">
             <Label>
               Name
@@ -114,6 +114,7 @@ export const InfoModal = (
               onChange={onChange}
               value={name}
               disabled={isPending}
+              className="border-none"
             />
           </div>
           {
@@ -138,35 +139,37 @@ export const InfoModal = (
                 />
               </div>
             ) : (
-              <div className="space-y-2 rounded-xl p-4 outline-dashed outline-muted">
-                <Label>
+              <div>
+                <Label className="mb-4">
                   Thumbnail
                 </Label>
-                <UploadDropzone
-                  endpoint='thumbnailUploader'
-                  appearance={{
-                    label: {
-                      color: "#FFFFFF",
-                    },
-                    allowedContent: {
-                      color: "#FFFFFF",
-                    }
-                  }}
-                  onClientUploadComplete={
-                    res => {
-                      toast.success('Thumbnail uploaded successfully');
-                      setThumbnailUrl(res[0].ufsUrl);
-                      // closeRef.current?.click();
-                      router.refresh();
+                <div className="space-y-2 rounded-xl p-4 outline-dashed outline-muted/10">
+                  <UploadDropzone
+                    endpoint='thumbnailUploader'
+                    appearance={{
+                      label: {
+                        color: "#FFFFFF",
+                      },
+                      allowedContent: {
+                        color: "#FFFFFF",
+                      }
+                    }}
+                    onClientUploadComplete={
+                      res => {
+                        toast.success('Thumbnail uploaded successfully');
+                        setThumbnailUrl(res[0].ufsUrl);
+                        closeRef.current?.click();
+                        router.refresh();
 
+                      }
                     }
-                  }
-                  onUploadError={
-                    (error: Error) => {
-                      toast.error('Failed to upload thumbnail');
+                    onUploadError={
+                      (error: Error) => {
+                        toast.error('Failed to upload thumbnail');
+                      }
                     }
-                  }
-                />
+                  />
+                </div>
               </div>
             )
           }

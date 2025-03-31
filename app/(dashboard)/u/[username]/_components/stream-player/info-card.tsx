@@ -28,13 +28,13 @@ export const InfoCard = (
 
   return (
     <div className="px-4">
-      <div className="rounded-xl bg-background">
-        <div className="flex items-center gap-x-2.5 p-4">
-          <div className="rounded-md bg-blue-600 p2 h-auto w-auto">
+      <div className="rounded-xl bg-background p-6 lg:p-8">
+        <div className="flex items-center gap-x-2.5 mb-6">
+          <div className="rounded-md bg-blue-500 p-2 h-auto w-auto">
             <Pencil />
           </div>
           <div>
-            <h2 className="text-sm lg:text-lg font-semibold capitalize">
+            <h2 className="text-lg lg:text-xl font-semibold capitalize">
               Edit Your Stream Info
             </h2>
             <p className="text-muted-foreground text-xs lg:text-sm">
@@ -47,23 +47,23 @@ export const InfoCard = (
           />
           <Separator />
         </div>
-        <div className="p-4 lg:p-8 space-y-4">
+        <div className="space-y-4">
           <div className="">
-            <h3 className="text-sm text-muted-foreground mb-2">
+            <h3 className="text-sm lg:text-base text-foreground mb-2">
               Name
             </h3>
-            <p className="text-sm font-semibold text-foreground/40">
+            <p className="text-lg font-semibold text-foreground/40">
               {name}
             </p>
           </div>
           <div>
-            <h3 className="text-sm text-muted-foreground mb-2">
+            <h3 className="text-sm lg:text-base text-foreground mb-2">
               Thumbnail
             </h3>
-            <div className="w-full h-40 bg-cover bg-center rounded-lg">
+            <div className="w-full h-auto bg-cover bg-center rounded-lg">
               {
                 thumbnailUrl && (
-                  <div className="relative aspect-video rounded-md overflow-hidden w-[300px] h-auto border border-white/10">
+                  <div className="relative aspect-video rounded-md overflow-hidden w-full h-auto border border-white/10">
                     <Image
                       fill
                       src={thumbnailUrl}

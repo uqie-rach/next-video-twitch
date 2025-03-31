@@ -1,5 +1,6 @@
 'use client';
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { VerifiedMark } from "../verified-mark";
 import { BioModal } from "./bio-modal";
 
@@ -47,6 +48,22 @@ export const AboutCard = (
         <p className="text-sm">
           {bio || "No bio available."}
         </p>
+      </div>
+    </div>
+  )
+}
+
+
+export const AboutCardSkeleton = () => {
+  return (
+    <div className="px-4">
+      <div className="group rounded-xl bg-background p-6 lg:p-10 flex flex-col gap-y-3">
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-6 w-32" />
+          <Skeleton className="h-8 w-8 rounded-full" />
+        </div>
+        <Skeleton className="h-6 w-24" />
+        <Skeleton className="h-6 w-full" />
       </div>
     </div>
   )

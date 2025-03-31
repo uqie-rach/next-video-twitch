@@ -62,8 +62,8 @@ export const BioModal = (
             onChange={(e) => setValue(e.target.value)}
             value={value || ""}
             disabled={isPending}
-            rows={5}
             property="bio"
+            className="border-none resize-none"
           />
           <div className="flex justify-between">
             <DialogClose asChild>

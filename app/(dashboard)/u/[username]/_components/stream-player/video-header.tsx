@@ -46,7 +46,7 @@ export const VideoHeader = (
   const isHost = hostAsViewer === viewerIdentity;
 
   return (
-    <div className="flex flex-col lg:from-white gap-y-4 lg:gap-y-0 items-start justify-between px-4">
+    <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 items-start justify-between px-4">
       <div className="flex items-center gap-x-3">
         <UserAvatar
           imageUrl={imageUrl}
@@ -57,7 +57,7 @@ export const VideoHeader = (
         />
         <div className="space-y-1">
           <div className="flex items-center gap-x-2">
-            <h2 className="text-lg font-semibold">
+            <h2 className="text-lg lg:text-xl xl:text-2xl font-semibold">
               {hostName}
             </h2>
             <VerifiedMark />
@@ -80,19 +80,19 @@ export const VideoHeader = (
             )
           }
         </div>
-        <Actions
-          isFollowing={isFollowing}
-          hostIdentity={hostIdentity}
-          isHost={isHost}
-        />
       </div>
+      <Actions
+        isFollowing={isFollowing}
+        hostIdentity={hostIdentity}
+        isHost={isHost}
+      />
     </div>
   )
 }
 
 export const VideoHeaderSkeleton = () => {
   return (
-    <div className="flex flex-col lg:from-white gap-y-4 lg:gap-y-0 items-start justify-between px-4">
+    <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 items-start justify-between px-4">
       <div className="flex items-center gap-x-3">
         <UserAvatarSkeleton size='lg' />
         <div className="space-y-2">
