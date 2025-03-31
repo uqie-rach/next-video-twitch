@@ -64,7 +64,7 @@ export const CommunityTab = (
   if (isHidden) {
     return (
       <div className="flex flex-1 items-center justify-center">
-        <p className="text-sm text-muted-foreground/50">
+        <p className="text-sm text-muted-foreground">
           Community is disabled
         </p>
       </div>
@@ -84,7 +84,7 @@ export const CommunityTab = (
       {
         filteredParticipant().length === 0 && (
           <div className="flex items-center justify-center h-full">
-            <p className="text-sm text-muted-foreground/50">
+            <p className="text-sm text-muted-foreground">
               No result
             </p>
           </div>

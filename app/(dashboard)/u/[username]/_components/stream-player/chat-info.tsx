@@ -43,7 +43,7 @@ export const ChatInfo = (
   if (!isDelayed && !isFollowersOnly) return null;
 
   return (
-    <div className="p-2 text-muted-foreground/50 bg-white/5 border border-white/5 w-full rounded-t-md flex items-center gap-x-2">
+    <div className="p-2 text-muted-foreground bg-white/5 border border-white/5 w-full rounded-t-md flex items-center gap-x-2">
       <Hint label={hint}>
         <Info className="h-4 w-4" />
       </Hint>
