@@ -24,7 +24,7 @@ export const VariantToggle = () => {
   const label = isChat ? 'Community' : 'Go back to chat';
 
   return (
-    <Hint label={label} side="left" asChild>
+    <Hint label={label} side="bottom" asChild>
       <Button
         onClick={onToggle}
         variant='ghost'

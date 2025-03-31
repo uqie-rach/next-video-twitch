@@ -67,7 +67,7 @@ export const Chat = (
   };
 
   return (
-    <div className="flex flex-col bg-background border-l border-b border-white/10 pt-0 h-[calc(100vh-80px)]">
+    <div className="flex flex-col bg-background border-l border-white/5 pt-0 h-[calc(100vh-80px)]">
       <ChatHeader />
       {
         variant === ChatVariant.CHAT && (
