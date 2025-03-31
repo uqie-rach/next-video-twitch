@@ -3,19 +3,23 @@
 import qs from 'query-string';
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
+import { SearchIcon, X } from 'lucide-react';
+import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { SearchIcon, X } from 'lucide-react';
 
 const Search = () => {
   const router = useRouter();
-  const [value, setValue] = useState('second');
+  const [value, setValue] = useState('');
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!value) return;
+    if (!value) {
+      toast.error('Field cannot be empty');
+      return;
+    };
 
     const url = qs.stringifyUrl({
       url: '/search',
@@ -40,8 +44,8 @@ const Search = () => {
         type='text'
         value={value}
         onChange={e => setValue(e.target.value)}
-        placeholder='Search...'
-        className='rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 border-none !bg-foreground/5'
+        placeholder='Search streams or users'
+        className='rounded-r-none focus-visible:ring-white/40 border-none !bg-foreground/5'
       />
       {
         value && (
@@ -50,7 +54,7 @@ const Search = () => {
       }
       <Button
         type='submit'
-        className='rounded-l-none'
+        className='rounded-l-none cursor-pointer'
         variant='secondary'
         size='sm'
       >
