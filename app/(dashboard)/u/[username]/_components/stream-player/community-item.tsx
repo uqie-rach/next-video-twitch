@@ -38,7 +38,7 @@ export const CommunityItem = ({
 
     startTransition(() => {
       onBlock(participantIidentity)
-        .then(data => toast.success(`Blocked ${participantName}`))
+        .then(data => toast.success(`Blocked ${data?.blocked.username}`))
         .catch(err => toast.error(`Failed to block ${participantName}`))
     });
 
@@ -61,11 +61,12 @@ export const CommunityItem = ({
           <Hint
             label="Block"
             side="left"
+            asChild
           >
             <Button
               className="h-auto w-auto p-1 rounded-full opacity-0 group-hover:opacity-100"
               onClick={handleBlock}
-              disabled={isSelf || isHost || isPending}
+              disabled={isSelf || !isHost || isPending}
             >
               <MinusCircle className="text-red-500" size={16} />
             </Button>
