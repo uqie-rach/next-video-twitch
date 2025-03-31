@@ -32,7 +32,7 @@ const Container = ({
       className={
         cn(
           'flex-1',
-          collapsed ? 'ml-[70px]' : 'ml-60 lg:ml-60',
+          collapsed ? 'ml-[90px]' : 'ml-[90px] lg:ml-60',
         )
       }
     >
