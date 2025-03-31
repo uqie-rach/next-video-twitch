@@ -15,8 +15,32 @@ import { VideoHeader, VideoHeaderSkeleton } from "./video-header";
 import { AboutCard } from "./about-card";
 import { InfoCard } from "./info-card";
 
+type SafeStreamType = {
+  id: string;
+  isLive: boolean;
+  isChatDelayed: boolean;
+  isChatEnabled: boolean;
+  isChatFollowersOnly: boolean;
+  name: string;
+  thumbnailUrl: string | null;
+}
+
+type SafeUserType = {
+  id: string;
+  username: string;
+  bio: string | null;
+  stream: SafeStreamType | null;
+  imageUrl: string;
+  _count: { followedBy: number }
+}
+
 interface StreamPlayerProps {
-  user: User & { stream: Stream | null };
+  user: SafeUserType & {
+    stream: SafeStreamType | null;
+    _count: {
+      followedBy: number;
+    }
+  };
   stream: Stream;
   isFollowing: boolean;
 }
