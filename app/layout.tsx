@@ -1,15 +1,15 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import type { Metadata } from 'next'
-import { ThemeProvider } from '@/components/provider/theme-provider'
 import { Toaster } from 'sonner'
 
-import { lato } from '@/lib/fonts'
 import './globals.css'
+import { nunitoSans } from '@/lib/fonts'
+import { ThemeProvider } from '@/components/provider/theme-provider'
 
 export const metadata: Metadata = {
-  title: 'Next Video Twitch',
-  description: 'Next Video Twitch',
+  title: 'StreamIt | Stream, Watch, Share',
+  description: 'StreamIt | Stream, Watch, Share',
 }
 
 export default function RootLayout({
@@ -20,14 +20,14 @@ export default function RootLayout({
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${lato.variable} antialiased`}>
+        <body className={`${nunitoSans.className} antialiased`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem={false}
             storageKey="video-theme"
           >
-            <Toaster theme='light' position='bottom-center'/>
+            <Toaster theme='light' position='bottom-center' />
             {children}
           </ThemeProvider>
         </body>
