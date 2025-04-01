@@ -38,8 +38,11 @@ export const CommunityItem = ({
 
     startTransition(() => {
       onBlock(participantIidentity)
-        .then(data => toast.success(`Blocked ${data?.blocked.username}`))
-        .catch(err => toast.error(`Failed to block ${participantName}`))
+        .then(data => {
+          if (!data) return toast.error(`Failed to block ${participantName}`);
+          toast.success(`Blocked ${data?.blocked.username}`)
+        })
+        .catch(() => toast.error(`Failed to block ${participantName}`))
     });
 
   }

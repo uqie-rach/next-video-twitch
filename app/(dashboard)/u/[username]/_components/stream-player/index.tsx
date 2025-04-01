@@ -1,8 +1,6 @@
 'use client';
 
-import { Stream, User } from "@prisma/client";
 import { LiveKitRoom } from '@livekit/components-react';
-import { LoaderCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useViewerToken } from "@/hooks/use-viewer-token";
@@ -15,15 +13,16 @@ import { VideoHeader, VideoHeaderSkeleton } from "./video-header";
 import { AboutCard, AboutCardSkeleton } from "./about-card";
 import { InfoCard } from "./info-card";
 
-type SafeStreamType = {
-  id: string;
-  isLive: boolean;
-  isChatDelayed: boolean;
-  isChatEnabled: boolean;
-  isChatFollowersOnly: boolean;
+export type SafeStreamType = {
   name: string;
+  id: string;
   thumbnailUrl: string | null;
+  isLive: boolean;
+  isChatEnabled: boolean;
+  isChatDelayed: boolean;
+  isChatFollowersOnly: boolean;
 }
+
 
 type SafeUserType = {
   id: string;
@@ -36,12 +35,11 @@ type SafeUserType = {
 
 interface StreamPlayerProps {
   user: SafeUserType & {
-    stream: SafeStreamType | null;
     _count: {
       followedBy: number;
     }
   };
-  stream: Stream;
+  stream: SafeStreamType | null;
   isFollowing: boolean;
 }
 
@@ -64,17 +62,6 @@ const StreamPlayer = (
       <StreamPlayerSkeleton />
     )
   }
-
-  // Populate the props for the chat component
-  let ChatProps = {
-    viewerName: name,
-    hostName: user.username,
-    hostIdentity: user.id,
-    isFollowing: isFollowing,
-    isChatEnabled: stream.isChatEnabled,
-    isChatDelayed: stream.isChatDelayed,
-    isChatFollowersOnly: stream.isChatFollowersOnly,
-  };
 
   return (
     <>
@@ -113,8 +100,8 @@ const StreamPlayer = (
           <InfoCard
             hostIdentity={user.id}
             viewerIdentity={identity}
-            name={stream.name}
-            thumbnailUrl={stream.thumbnailUrl || ''}
+            name={stream?.name}
+            thumbnailUrl={stream?.thumbnailUrl || ''}
           />
           <AboutCard
             hostIdentity={user.id}
@@ -130,7 +117,15 @@ const StreamPlayer = (
             collapsed && 'hidden',
           )
         }>
-          <Chat {...ChatProps} />
+          <Chat
+            hostIdentity={user.id}
+            viewerName={name}
+            isFollowing={isFollowing}
+            isChatEnabled={stream?.isChatEnabled}
+            isChatDelayed={stream?.isChatDelayed}
+            isChatFollowersOnly={stream?.isChatFollowersOnly}
+            hostName={user.username}
+          />
         </div>
       </LiveKitRoom>
     </>

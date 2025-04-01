@@ -1,4 +1,4 @@
-import { Stream, User } from "@prisma/client"
+import { User } from "@prisma/client"
 import Link from "next/link"
 import { formatDistanceToNow } from "date-fns"
 

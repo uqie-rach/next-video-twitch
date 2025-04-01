@@ -63,6 +63,7 @@ const UserAvatar = ({
 
 export default UserAvatar;
 
+/* eslint-disable */
 interface UserAvatarSkeletonProps extends VariantProps<typeof avatarSizes> { };
 
 export const UserAvatarSkeleton = ({

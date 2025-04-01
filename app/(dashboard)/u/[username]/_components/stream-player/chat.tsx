@@ -17,9 +17,9 @@ interface ChatProps {
   hostName: string;
   hostIdentity: string;
   isFollowing: boolean;
-  isChatEnabled: boolean;
-  isChatDelayed: boolean;
-  isChatFollowersOnly: boolean;
+  isChatEnabled?: boolean;
+  isChatDelayed?: boolean;
+  isChatFollowersOnly?: boolean;
 };
 
 export const Chat = (

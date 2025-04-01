@@ -9,7 +9,7 @@ import { InfoModal } from "./info-modal";
 interface InfoCardProps {
   hostIdentity: string;
   viewerIdentity: string;
-  name: string;
+  name?: string;
   thumbnailUrl: string;
 };
 
@@ -67,7 +67,7 @@ export const InfoCard = (
                     <Image
                       fill
                       src={thumbnailUrl}
-                      alt={name}
+                      alt={`${name} stream thumbnail`}
                       className="object-cover"
                     />
                   </div>

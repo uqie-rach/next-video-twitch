@@ -1,27 +1,15 @@
 'use client';
 
-import { onUnblock } from "@/actions/block";
-import { Button } from "@/components/ui/button";
 import { useTransition } from "react";
 import { toast } from "sonner";
-import { User } from '@prisma/client';
+
+import { Button } from "@/components/ui/button";
+
+import { onUnblock } from "@/actions/block";
+
 interface UnblockButtonProps {
   userId: string
 };
-
-type CustomUser = {
-  data: false | {
-    blocker: {
-      id: string;
-      username: string;
-      imageUrl: string;
-      externalUserId: string;
-      bio: string | null;
-      createdAt: Date;
-      updatedAt: Date;
-    }
-  }
-}
 
 const UnblockButton = (
   { userId }: UnblockButtonProps
@@ -39,7 +27,7 @@ const UnblockButton = (
           const blockedUser = result.blocked;
           toast.success(`Unblocked ${blockedUser.username}`);
         })
-        .catch(err => toast.error("Failed to unblock user"));
+        .catch(() => toast.error("Failed to unblock user"));
     });
   };
 

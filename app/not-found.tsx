@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     <div className="h-full flex flex-col space-y-4 items-center justify-center text-muted-foreground">
       <h1 className="text-4xl">404</h1>
       <p>
-        We couldn't find the page you were looking for. It may have been removed or never existed.
+        We couldn&apos;t find the page you were looking for. It may have been removed or never existed.
       </p>
       <Button variant='secondary' asChild>
         <Link href='/'>Go back home</Link>

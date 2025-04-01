@@ -4,8 +4,8 @@ import { useMemo } from "react";
 import Hint from "@/components/hint";
 
 interface ChatInfoProps {
-  isDelayed: boolean;
-  isFollowersOnly: boolean;
+  isDelayed?: boolean;
+  isFollowersOnly?: boolean;
 }
 
 export const ChatInfo = (

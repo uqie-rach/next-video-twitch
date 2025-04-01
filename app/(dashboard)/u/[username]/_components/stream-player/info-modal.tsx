@@ -30,7 +30,7 @@ import { updateStream } from "@/actions/stream";
 import { UploadDropzone } from "@/lib/uploadthing";
 
 interface InfoModalProps {
-  initialName: string;
+  initialName?: string;
   initialThumbnailUrl: string | null;
 };
 
@@ -40,7 +40,7 @@ export const InfoModal = (
     initialThumbnailUrl
   }: InfoModalProps
 ) => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState<string>('');
   const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(initialThumbnailUrl);
 
   const closeRef = useRef<ComponentRef<"button">>(null);
@@ -49,7 +49,7 @@ export const InfoModal = (
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    setName(initialName);
+    setName(initialName!);
   }, [initialName]);
 
   const onRemove = () => {
@@ -164,7 +164,7 @@ export const InfoModal = (
                       }
                     }
                     onUploadError={
-                      (error: Error) => {
+                      () => {
                         toast.error('Failed to upload thumbnail');
                       }
                     }

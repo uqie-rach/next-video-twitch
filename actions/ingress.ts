@@ -46,7 +46,8 @@ export const resetIngresses = async (hostIdentity: string) => {
   }
 };
 
-export const createIngress = async (ingressType: IngressInput) => {
+export const createIngress = async (type: "WHIP" | "RTMP") => {
+  const ingressType = type === "WHIP" ? IngressInput.WHIP_INPUT : IngressInput.RTMP_INPUT;
   const self = await getSelf();
 
   await resetIngresses(self.id);
