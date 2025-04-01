@@ -30,7 +30,7 @@ export async function getFollowedUsers() {
     });
 
     return followedUsers;
-  } catch (error) {
+  } catch {
     return [];
   }
 }
@@ -61,7 +61,7 @@ export async function isFollowingUser(id: string) {
     // Convert existingFollow to a boolean
     return !!existingFollow;
 
-  } catch (error) {
+  } catch {
     return false;
   }
 }

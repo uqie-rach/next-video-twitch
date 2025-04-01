@@ -1,3 +1,5 @@
+'use client';
+
 import { User } from "@prisma/client"
 import Link from "next/link"
 
@@ -18,11 +20,12 @@ interface ResultCardProps {
 export const ResultCard = (
   { data }: ResultCardProps
 ) => {
+  console.log(data)
   return (
     <Link href={`/${data.user.username}`}>
       <div className="h-full w-full space-y-4">
         <Thumbnail
-          src={data.thumbnailUrl!}
+          src={data.thumbnailUrl}
           fallback={data.user.imageUrl}
           isLive={data.isLive}
           username={data.user.username}

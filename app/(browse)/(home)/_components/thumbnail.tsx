@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 
 import { Skeleton } from "@/components/ui/skeleton";
@@ -5,7 +7,7 @@ import UserAvatar from "@/components/user-avatar";
 import LiveBadge from "@/components/live-badge";
 
 interface ThumbnailProps {
-  src: string;
+  src: string | null;
   fallback: string;
   isLive: boolean;
   username: string;
@@ -34,7 +36,7 @@ export const Thumbnail = (
       </div>
     )
   } else {
-    <Image
+    content = <Image
       src={src}
       fill
       alt="thumbnail"

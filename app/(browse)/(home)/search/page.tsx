@@ -7,7 +7,7 @@ interface SearchPageProps {
   searchParams: Promise<{ term?: string }>
 };
 
-export const SearchPage = async (
+const SearchPage = async (
   { searchParams }: SearchPageProps
 ) => {
   const params = await searchParams;
@@ -25,3 +25,5 @@ export const SearchPage = async (
     </div>
   )
 }
+
+export default SearchPage;

@@ -15,9 +15,9 @@ interface ChatFormProps {
   value: string;
   onChange: (value: string) => void;
   isHidden: boolean;
-  isFollowersOnly: boolean;
-  isDelayed: boolean;
-  isFollowing: boolean;
+  isFollowersOnly?: boolean;
+  isDelayed?: boolean;
+  isFollowing?: boolean;
 }
 
 export const ChatForm = (

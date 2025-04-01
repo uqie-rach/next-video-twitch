@@ -2,10 +2,14 @@
 
 @plugin "tailwindcss-animate";
 
+@import "uploadthing/tw/v4";
+@source "../node_modules/@uploadthing/react/dist";
+
 html,
 body,
 :root {
   height: 100%;
+  font-family: var(--font-barlow);
   @apply bg-neutral-900/80;
 }
 
@@ -17,12 +21,18 @@ body,
 
 .hidden-scrollbar::-webkit-scrollbar {
   display: none;
+  color: rgb(201, 202, 202);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @theme {
-  --font-lato: 'Lato', sans-serif;
 
-  --color-background: hsl(230, 13.95%, 16.86%);
+  --color-background: rgb(33, 35, 43);
   --color-foreground: hsl(0 0% 100%);
 
   --color-card: hsl(231, 13%, 20%);
@@ -32,9 +42,9 @@ body,
   --color-popover-foreground: hsl(0 0% 100%);
 
   --color-muted: hsl(210 40% 96.1%);
-  --color-muted-foreground: hsl(220, 5%, 100%);
+  --color-muted-foreground: hsl(220, 5%, 60%);
 
-  --color-accent: hsl(210 40% 96.1%);
+  --color-accent: rgb(201, 202, 202);
   --color-accent-foreground: hsl(222.2 47.4% 11.2%);
 
   --color-destructive: hsl(0 84.2% 60.2%);
@@ -48,11 +58,7 @@ body,
   --radius-radius: 0.5rem;
 }
 
-@layer base {
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+@layer base {}
 
 body {
   font-family: var(--font-lato);

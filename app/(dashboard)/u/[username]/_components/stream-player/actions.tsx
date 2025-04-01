@@ -32,14 +32,20 @@ export const Actions = (
   function handleFollow() {
     startTransition(() => {
       onFollow(hostIdentity)
-        .then(data => toast.success(`Following ${data.following.username}`))
+        .then(data => {
+          if (!data) return toast.error('Something went wrong. Please try again.');
+          toast.success(`Following ${data.following.username}`)
+        })
         .catch(() => toast.error('Something went wrong. Please try again.'));
     })
   }
   function handleUnfollow() {
     startTransition(() => {
       onUnfollow(hostIdentity)
-        .then(data => toast.success(`Unfollowed ${data.following.username}`))
+        .then(data => {
+          if (!data) return toast.error('Something went wrong. Please try again.');
+          toast.success(`Unfollowed ${data.following.username}`)
+        })
         .catch(() => toast.error('Something went wrong. Please try again.'));
     })
   }

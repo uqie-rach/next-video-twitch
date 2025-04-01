@@ -1,10 +1,10 @@
-import { Stream, User } from "@prisma/client"
+import { User } from "@prisma/client"
 import Link from "next/link"
 import { formatDistanceToNow } from "date-fns"
 
 import UserAvatar from "@/components/user-avatar"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Thumbnail, ThumbnailSkeleton } from "../../(home)/_components/thumbnail"
+import { Thumbnail, ThumbnailSkeleton } from "../../_components/thumbnail"
 
 interface ResultCardProps {
   data: {

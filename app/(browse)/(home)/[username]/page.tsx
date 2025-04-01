@@ -1,9 +1,10 @@
+import { notFound } from "next/navigation";
+
+import StreamPlayer from "@/app/(dashboard)/u/[username]/_components/stream-player";
+
 import { isFollowingUser } from "@/lib/follow-service";
 import { getUserByUsername } from "@/lib/user-service";
-import { notFound } from "next/navigation";
-import Actions from "./_components/actions";
 import { isBlockedByUser } from "@/lib/block-service";
-import StreamPlayer from "@/app/(dashboard)/u/[username]/_components/stream-player";
 
 interface UserPageProps {
   params: Promise<{

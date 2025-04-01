@@ -1,7 +1,7 @@
 'use client';
 
 import { useSidebar } from '@/store/use-sidebar';
-import { Stream, User } from '@prisma/client'
+import { User } from '@prisma/client'
 import React from 'react'
 
 import UserItem, { UserItemSkeleton } from './user-item';
@@ -39,7 +39,7 @@ const Recommended = ({
                     key={user?.id}
                     username={user?.username}
                     imageUrl={user?.imageUrl}
-                    isLive={user.stream?.isLive!}
+                    isLive={user.stream?.isLive}
                   />
                 ))
               }

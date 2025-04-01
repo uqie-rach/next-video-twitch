@@ -18,18 +18,12 @@ const roomService = new RoomServiceClient(
 export const onBlock = async (id: string) => {
   const self = await getSelf();
 
-  let blockedUser;
-
-  try {
-    blockedUser = await blockUser(id);
-  } catch {
-
-  }
+  let blockedUser = await blockUser(id);
 
   try {
     await roomService.removeParticipant(self.id, id);
   } catch {
-
+    throw new Error("Internal Error");
   }
 
   revalidatePath(`/u/${self.username}/community`);

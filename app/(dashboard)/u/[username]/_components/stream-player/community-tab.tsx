@@ -1,13 +1,10 @@
 'use client';
 
 import { useParticipants } from "@livekit/components-react";
-import { LocalParticipant, Participant, RemoteParticipant } from "livekit-client";
-import { MinusIcon } from "lucide-react";
+import { LocalParticipant, RemoteParticipant } from "livekit-client";
 import { useDebounceValue } from "usehooks-ts";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import Hint from "@/components/hint";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -64,7 +61,7 @@ export const CommunityTab = (
   if (isHidden) {
     return (
       <div className="flex flex-1 items-center justify-center">
-        <p className="text-sm text-muted-foreground/50">
+        <p className="text-sm text-muted-foreground">
           Community is disabled
         </p>
       </div>
@@ -84,7 +81,7 @@ export const CommunityTab = (
       {
         filteredParticipant().length === 0 && (
           <div className="flex items-center justify-center h-full">
-            <p className="text-sm text-muted-foreground/50">
+            <p className="text-sm text-muted-foreground">
               No result
             </p>
           </div>

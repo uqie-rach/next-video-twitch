@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 interface UserItemProps {
   imageUrl: string;
   username: string;
-  isLive: boolean;
+  isLive?: boolean;
 }
 
 const UserItem = ({ imageUrl, username, isLive }: UserItemProps) => {

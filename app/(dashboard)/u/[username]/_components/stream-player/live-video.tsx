@@ -66,7 +66,7 @@ const LiveVideo = (
     setIsFullscreen(isCurrentlyFullscreen);
   };
 
-  useEventListener("fullscreenchange", handleFullscreenChange, wrapperRef);
+  useEventListener("fullscreenchange", handleFullscreenChange, { current: document });
 
   return (
     <div

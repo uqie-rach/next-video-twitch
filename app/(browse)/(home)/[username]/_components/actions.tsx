@@ -21,7 +21,11 @@ const Actions = ({ isBlocking, isFollowing, userId }: ActionProps) => {
   function handleFollow() {
     startTransition(() => {
       onFollow(userId)
-        .then((data) => toast.success(`You are now following ${data.following.username}`))
+        .then((data) => {
+          if (!data) return toast.error('Failed to follow user');
+
+          toast.success(`You are now following ${data.following.username}`);
+        })
         .catch((error) => toast.error(error.message));
     })
   }
@@ -29,7 +33,11 @@ const Actions = ({ isBlocking, isFollowing, userId }: ActionProps) => {
   function handleUnfollow() {
     startTransition(() => {
       onUnfollow(userId)
-        .then((data) => toast.success(`You are no longer following ${data.following.username}`))
+        .then((data) => {
+          if (!data) return toast.error('Failed to follow user');
+
+          toast.success(`You are no longer following ${data.following.username}`);
+        })
         .catch((error) => toast.error(error.message));
     })
   }
@@ -39,7 +47,11 @@ const Actions = ({ isBlocking, isFollowing, userId }: ActionProps) => {
   function handleBlock() {
     startTransition(() => {
       onBlock(userId)
-        .then(data => toast.success(`Blocked ${data.blocked.username}`))
+        .then(data => {
+          if (!data) return toast.error('Failed to block user');
+
+          toast.success(`Blocked ${data.blocked.username}`)
+        })
         .catch(error => toast.error(error.message))
     })
   }
@@ -47,7 +59,11 @@ const Actions = ({ isBlocking, isFollowing, userId }: ActionProps) => {
   function handleUnblock() {
     startTransition(() => {
       onUnblock(userId)
-        .then(data => toast.success(`Unblocked ${data.blocked.username}`))
+        .then(data => {
+          if (!data) return toast.error('Failed to block user');
+
+          toast.success(`Unblocked ${data.blocked.username}`)
+        })
         .catch(error => toast.error(error.message))
     })
   }

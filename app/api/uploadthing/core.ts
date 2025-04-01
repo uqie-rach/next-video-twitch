@@ -1,8 +1,8 @@
-import { getSelf } from "@/lib/auth-service";
-import { db } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
+
+import { getSelf } from "@/lib/auth-service";
+import { db } from "@/lib/prisma";
 
 const f = createUploadthing();
 
@@ -20,7 +20,7 @@ export const ourFileRouter = {
     },
   })
     // Set permissions and file types for this FileRoute
-    .middleware(async ({ req }) => {
+    .middleware(async () => {
       // This code runs on your server before upload
       const self = await getSelf();
 
